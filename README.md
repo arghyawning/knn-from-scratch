@@ -4,7 +4,6 @@
 
 Draw a graph that shows the distribution of the various labels across the entire dataset.
 
-![graph obtained](./label_freq_graph.png)
-
+![graph obtained](label_freq_graph.png)
 
 ### Task 2
