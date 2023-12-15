@@ -17,15 +17,15 @@ Create a KNN class where you implement the following: You should not use sklearn
 Examples:
 
 - KNN(encoder_type='resnet', k=3, distance_metric='euclidean')
-  Accuracy: 21.00%
-  Precision: 14.19%
-  Recall: 14.16%
-  F1 Score: 12.94%
+    - Accuracy: 21.00%
+    - Precision: 14.19%
+    - Recall: 14.16%
+    - F1 Score: 12.94%
 - KNN(encoder_type='vit', k=5, distance_metric='manhattan')
-Accuracy: 26.33%
-Precision: 17.84%
-Recall: 18.31%
-F1 Score: 16.80%
+    - Accuracy: 26.33%
+    - Precision: 17.84%
+    - Recall: 18.31%
+    - F1 Score: 16.80%
 <!-- - KNN(encoder_type='resnet', k=7, distance_metric='cosine') -->
 
 ### Task 3
