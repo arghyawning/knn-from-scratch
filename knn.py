@@ -34,28 +34,31 @@ class KNN:
             dist = np.sum(subabs)
             return dist
         elif self.distance_metric == "cosine":
-            dot = np.dot(testdp, traindp)
-            testdpnorm = np.linalg.norm(testdp)
-            traindpnorm = np.linalg.norm(traindp)
-            dist = dot / (testdpnorm * traindpnorm)
+            dot = np.dot(testdp, np.transpose(traindp))
+            testmag = np.sqrt(testdp.dot(np.transpose(testdp)))
+            trainmag = np.sqrt(traindp.dot(np.transpose(traindp)))
+            similarity = dot / (testmag * trainmag)
+            dist = 1 - similarity
             return dist
         else:
             print("Invalid distance metric")
             return
 
-    # calculate accuracy, precision, recall and f1
-    def calc_scores(self, pred_labels):
+    # calculates, displays and returns accuracy, precision, recall and f1
+    def calc_scores(self, pred_labels, display):
         accuracy = accuracy_score(self.labels_test, pred_labels)
         precision = precision_score(self.labels_test, pred_labels, average="macro")
         recall = recall_score(self.labels_test, pred_labels, average="macro")
         f1 = f1_score(self.labels_test, pred_labels, average="macro")
-        print(f"Accuracy: {accuracy * 100:.2f}%")
-        print(f"Precision: {precision * 100:.2f}%")
-        print(f"Recall: {recall * 100:.2f}%")
-        print(f"F1 Score: {f1 * 100:.2f}%")
+        if display:
+            print(f"Accuracy: {accuracy * 100:.2f}%")
+            print(f"Precision: {precision * 100:.2f}%")
+            print(f"Recall: {recall * 100:.2f}%")
+            print(f"F1 Score: {f1 * 100:.2f}%")
+        return accuracy, precision, recall, f1
 
     # displays and returns predicted labels
-    def predict(self, metrics):
+    def predict(self, displayPred, metrics):
         pred_labels = []
         for dptest in self.test_values:
             distances = {}
@@ -81,12 +84,13 @@ class KNN:
                     pred_label = l
             pred_labels.append(pred_label)
 
-        print("Predicted labels:")
-        print(pred_labels)
-        print("Actual labels:")
-        print(self.labels_test.tolist())
+        if displayPred:
+            print("Predicted labels:")
+            print(pred_labels)
+            print("Actual labels:")
+            print(self.labels_test.tolist())
 
         if metrics:
-            self.calc_scores(pred_labels)
+            self.calc_scores(pred_labels, True)
 
         return pred_labels
