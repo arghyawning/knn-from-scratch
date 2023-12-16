@@ -2,11 +2,15 @@
 
 ### Task 1
 
+#### Dataset Exploration
+
 Draw a graph that shows the distribution of the various labels across the entire dataset.
 
 ![graph obtained](label_freq_graph.png)
 
 ### Task 2
+
+#### KNN Implementation
 
 Create a KNN class where you implement the following: You should not use sklearn for this.
 
@@ -34,7 +38,7 @@ Examples:
 
 ### Task 3
 
-Hyperparameter Tuning
+#### Hyperparameter Tuning
 
 1. Find the best (k, encoder, distance metric) triplet that gives the best validation accuracy for a given data split (your choice).
 2. Print an Ordered rank list of top 20 such triplets.
@@ -43,6 +47,7 @@ Hyperparameter Tuning
 Best triplet: ((8, 'manhattan', 'vit'), 0.33666666666666667)
 
 Top 20 triplets:
+
 - ((8, 'manhattan', 'vit'), 0.33666666666666667)
 - ((3, 'euclidean', 'vit'), 0.33)
 - ((7, 'euclidean', 'vit'), 0.33)
@@ -65,3 +70,23 @@ Top 20 triplets:
 - ((7, 'cosine', 'vit'), 0.31333333333333335)
 
 ![graph obtained](k_vs_accuracy.png)
+
+### Task 4
+
+#### Testing
+
+Create a bash script that when given data from a file in the form of a list of test embeddings and test labels as a npy file exactly in the same format as the dataset file given to you, return the same metrics as discussed in task 1
+
+```
++-----------+---------+
+| Metric    | Score   |
++===========+=========+
+| Accuracy  | 17.00%  |
++-----------+---------+
+| Precision | 7.95%   |
++-----------+---------+
+| Recall    | 11.39%  |
++-----------+---------+
+| F1 Score  | 8.21%   |
++-----------+---------+
+```
